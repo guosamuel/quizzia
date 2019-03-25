@@ -11,3 +11,4 @@ question5 = Question.find_or_create_by(trivia_question: "Which Teenage Mutant Ni
 paul_answer1 = UserAnswer.find_or_create_by(user_id: paul.id, question_id: question1.id, correct: true)
 sam_answer1 = UserAnswer.find_or_create_by(user_id: sam.id, question_id: question2.id, correct: false)
 sam_answer2 = UserAnswer.find_or_create_by(user_id: sam.id, question_id: question3.id, correct: true)
+paul_answer2 =UserAnswer.find_or_create_by(user_id: paul.id, question_id: question4.id, correct: false)
