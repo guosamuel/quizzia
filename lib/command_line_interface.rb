@@ -7,37 +7,6 @@ def get_user_name
   user_name = gets.chomp
 end
 
-def get_number_of_questions
-#tell user to input an integer between 1 to 50 (inclusive)
-  puts "How many question would you like to waste your time with? (1-10)"
-  num_of_questions_variable = gets.chomp
-  if num_of_questions_variable.to_i >= 1 && num_of_questions_variable.to_i <= 10
-    num_of_questions_variable.to_i
-  else
-    puts "Numbers between 1 and 10 dipwad"
-    get_number_of_questions
-  end
-end
-
-def get_type_of_questions
-#tell user to input question type (1-multiple, 2-boolian, 3-both)
-  puts "What format would you like to use?"
-    puts "1- Multiple Choice"
-    puts "2- True/False"
-    puts "3- Both"
-  question_type_variable = gets.chomp
-  if question_type_variable == "1"
-    "multiple"
-  elsif question_type_variable == "2"
-    "boolean"
-  elsif question_type_variable == "3"
-    nil
-  else
-    puts "Hey, you goofed, please select 1, 2, or 3"
-    get_type_of_questions
-  end
-end
-
 def check_user_name(user_name)
   if User.find_by(user_name: user_name)
     puts "Welcome back #{user_name}!"
@@ -72,6 +41,38 @@ def start_trivia
   end
 end
 
+def get_number_of_questions
+#tell user to input an integer between 1 to 50 (inclusive)
+  puts "How many question would you like to waste your time with? (1-10)"
+  num_of_questions_variable = gets.chomp
+  if num_of_questions_variable.to_i >= 1 && num_of_questions_variable.to_i <= 10
+    num_of_questions_variable.to_i
+  else
+    puts "Numbers between 1 and 10 dipwad"
+    get_number_of_questions
+  end
+end
+
+def get_type_of_questions
+#tell user to input question type (1-multiple, 2-boolian, 3-both)
+  puts "What format would you like to use?"
+    puts "1- Multiple Choice"
+    puts "2- True/False"
+    puts "3- Both"
+  question_type_variable = gets.chomp
+  if question_type_variable == "1"
+    "multiple"
+  elsif question_type_variable == "2"
+    "boolean"
+  elsif question_type_variable == "3"
+    nil
+  else
+    puts "Hey, you goofed, please select 1, 2, or 3"
+    get_type_of_questions
+  end
+end
+
+
 
 def exit
   # if start_game == 'exit'|| question_type_variable == 'exit' || user_name  == 'exit' || answer == 'exit'
@@ -88,9 +89,7 @@ def question_countdown
 
 end
 
-def multiple_choice_answer_display
 
-end
 
 def multiple_choice_or_boolean
 
