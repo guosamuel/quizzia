@@ -39,71 +39,32 @@ def generate_questions(api_hash_of_questions)
   api_hash_of_questions["results"].each do |question|
     puts "QUESTION #{question_counter} of #{api_hash_of_questions["results"].length}"
     puts question["question"]
-    # puts "Please type in your answer:"
-    # puts question["correct_answer"]
-    # puts question["incorrect_answers"]
       if question["type"] == 'multiple'
         puts "Please choose a number betwee 1 and 4"
-# =======================
         compiled_answers = compile_all_multiple_choice_answers(question)
-       # all_answers = question["incorrect_answers"]
-       # all_answers << question["correct_answer"]
-       # all_answers.shuffle!
-# binding.pry
-# =======================
         mult_cho_hash = multiple_choice_hash_maker(compiled_answers)
-       # answer_hash = Hash.new{0}
-       # hash_counter = 1
-       #    compiled_answers.each do |answer|
-       #     answer_hash[hash_counter] = answer
-       #     hash_counter += 1
-       #     # binding.pry
-       #  end
-# =======================
-
-       # puts answer_hash
-# =======================
-      format_display_mult_choi_answers(compiled_answers)
-#        counter = 1
-#          compiled_answers.each do |answer|
-#            puts "#{counter} - #{answer}"
-#            # answer_hash = {"#{counter}" => "#{answer}"}
-#             # if answer_hash
-#            counter += 1
-# # =======================
-#          end
-       answer = gets.chomp
-
+        format_display_mult_choi_answers(compiled_answers)
+        answer = gets.chomp
        if mult_cho_hash[answer.to_i] == question["correct_answer"]
-          # if answer_hash[answer.to_i] == question["correct_answer"]
-            puts "Correct!"
-            puts " "
+            puts "Correct!\n "
             score_counter += 1
           else
-            # binding.pry
-            puts "You wrong!"
-            puts "It is obviously '#{question["correct_answer"]}'"
-            puts " "
+            puts "You wrong!\nIt is obviously '#{question["correct_answer"]}'.\n "
+            # puts " "
           end
-
       else
-
        puts "Please type either True or False"
        answer = gets.chomp
          if  question["correct_answer"].first.downcase == answer.first.downcase
-           puts 'Correct!'
-           puts " "
+           puts "Correct!\n "
            score_counter += 1
          else
-           puts "You're pretty dumb."
-           puts "The correct answer was '#{question["correct_answer"]}'"
-           puts " "
+           puts "You're pretty dumb.\nThe correct answer was '#{question["correct_answer"]}'.\n "
          end
        end
        question_counter += 1
     end
-    puts "You managed to score #{score_counter} out of #{api_hash_of_questions["results"].length}!"
-    puts "You must think you're soooo smmmarrt... Looser."
+    puts "You managed to score #{score_counter} out of #{api_hash_of_questions["results"].length}!\nYou must think you're soooo smmmarrt... Looser."
 end
 
 #Get score to stay with user_name after game ends then clears if user creates new user
