@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_25_202554) do
+ActiveRecord::Schema.define(version: 2019_03_27_201316) do
 
   create_table "questions", force: :cascade do |t|
     t.string "trivia_question"
@@ -25,6 +25,8 @@ ActiveRecord::Schema.define(version: 2019_03_25_202554) do
 
   create_table "users", force: :cascade do |t|
     t.string "user_name"
+    t.integer "num_of_correct_answers"
+    t.integer "num_of_total_answers"
   end
 
 end
