@@ -3,7 +3,7 @@ def welcome
 end
 
 def get_user_name
-  puts "Please choose your name:"
+  puts "Please choose a user name:"
   user_name = gets.chomp
 end
 
@@ -37,13 +37,14 @@ def start_trivia
     # puts "this working?"
     # get_number_of_questions
   else
-    start_trivia
+    # start_trivia
+    exit 
   end
 end
 
 def get_number_of_questions
 #tell user to input an integer between 1 to 50 (inclusive)
-  puts "How many question would you like to waste your time with? (1-10)"
+  puts "How many questions would you like to waste your time with? (1-10)"
   num_of_questions_variable = gets.chomp
   if num_of_questions_variable.to_i >= 1 && num_of_questions_variable.to_i <= 10
     num_of_questions_variable.to_i
@@ -55,7 +56,7 @@ end
 
 def get_type_of_questions
 #tell user to input question type (1-multiple, 2-boolian, 3-both)
-  puts "What format would you like to use?"
+  puts "Choose a question type: [1, 2, or 3]"
     puts "1- Multiple Choice"
     puts "2- True/False"
     puts "3- Both"
@@ -78,6 +79,7 @@ def exit
   # if start_game == 'exit'|| question_type_variable == 'exit' || user_name  == 'exit' || answer == 'exit'
   #   break
   # end
+  puts "Thanks for playing!"
 end
 
 def save_cahricter_stats

@@ -21,13 +21,14 @@ def generate_questions(api_hash_of_questions)
         puts "Please choose a number betwee 1 and 4"
        all_answers = question["incorrect_answers"]
        all_answers << question["correct_answer"]
-       all_answers.shuffle
-
+       all_answers.shuffle!
+# binding.pry
        answer_hash = Hash.new{0}
        hash_counter = 1
          all_answers.each do |answer|
            answer_hash[hash_counter] = answer
            hash_counter += 1
+           # binding.pry
          end
        # puts answer_hash
 
@@ -59,7 +60,7 @@ def generate_questions(api_hash_of_questions)
            puts " "
            score_counter += 1
          else
-           puts "you dumb"
+           puts "You're pretty dumb."
            puts "The correct answer was '#{question["correct_answer"]}'"
            puts " "
          end
