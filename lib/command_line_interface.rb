@@ -1,3 +1,7 @@
+@player = Audite.new
+# @player.load("./audio/Super Mario Bros.-Coin Sound Effect.mp3")
+# @player.start_stream
+
 def welcome
 puts " "
 print "Welcome to"
@@ -32,6 +36,9 @@ puts" | |  | | | | | |_  / |/ _` | "
 puts" | |__| | |_| | |/ /| | (_| | "
 puts"  l___l_ll__,_|_/___|_|l__,_| "
 puts " "
+
+@player.load('./audio/zapsplat_multimedia_radio_production_voice_male_processed_deep_says_get_ready_28178.mp3')
+@player.start_stream
 end
 
 

@@ -2,6 +2,8 @@ require 'rest-client'
 require 'json'
 require 'pry'
 
+@player = Audite.new
+
  def get_api(num_of_questions, question_type = nil)
    response_string = RestClient.get("https://opentdb.com/api.php?amount=#{num_of_questions}&type=#{question_type}")
    response_hash = JSON.parse(response_string)
@@ -50,9 +52,13 @@ def generate_questions(api_hash_of_questions)
             end
           if mult_cho_hash[answer.to_i] == question["correct_answer"]
             puts "Correct!\n "
+            @player.load("./audio/Super Mario Bros.-Coin Sound Effect.mp3")
+            @player.start_stream
             @score_counter += 1
           else
             puts "You wrong!\nIt is obviously '#{question["correct_answer"]}'.\n "
+            @player.load("./audio/zapsplat_multimedia_game_error_tone_009_24927.mp3")
+            @player.start_stream
           end
       else
        puts "   Please type either True or False"
@@ -62,9 +68,13 @@ def generate_questions(api_hash_of_questions)
            end
          if  question["correct_answer"].first.downcase == answer.first.downcase
            puts "Correct!\n "
+           @player.load("./audio/Super Mario Bros.-Coin Sound Effect.mp3")
+           @player.start_stream
            @score_counter += 1
          else
            puts "You're pretty dumb.\nThe correct answer was '#{question["correct_answer"]}'.\n "
+           @player.load("./audio/zapsplat_multimedia_game_error_tone_009_24927.mp3")
+           @player.start_stream
          end
        end
        @question_counter += 1
@@ -90,22 +100,25 @@ def save_program(current_user_name)
           current_num_of_correct_answers += @score_counter
         end
         User.update(User.find_by(user_name: current_user_name).id, num_of_correct_answers: current_num_of_correct_answers, num_of_total_answers: current_num_of_total_answers)
-          puts "Saving file. Do not shutdown computer.\n "
-          timer = 1
-          until timer == 4
+        puts "Saving file. Do not shutdown computer.\n "
+        timer = 1
+          while timer < 5
             print "*+*+*"
-
-            print " #{100/(4-timer)}% "
+            print " #{100/(5-timer)}% "
             sleep(1)
             timer += 1
           end
-          print " Complete!"
-          puts " "
-          puts " \nSave Successful!\n "
+        print " Complete!"
+        @player.load("./audio/zapsplat_multimedia_notification_mallet_synth_dreamy_014_26423.mp3")
+        @player.start_stream
+        sleep(1)
+        puts " "
+        puts " \nSave Successful!\n "
       else
         puts "Invalid argument. Select Yes or No"
         save_program(current_user_name)
      end
+
 end
 
 #Get score to stay with user_name after game ends then clears if user creates new user
