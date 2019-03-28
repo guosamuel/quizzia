@@ -173,3 +173,11 @@ def update_user_account_name(old_user_name)
     puts "Your new user name is now #{new_user_name}."
   end
 end
+
+def play_again?(user_name)
+  puts "Do you want to play again? [Y/N]"
+  play_again_input = gets.chomp
+  if play_again_input.first.downcase == "y" || play_again_input.downcase == "yes"
+    main_program(user_name)
+  end
+end

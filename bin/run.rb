@@ -21,6 +21,7 @@ def main_program(input_user_name)
     questions_list = get_api(num_of_questions_integer, question_type)
     generate_questions(questions_list)
     save_program(input_user_name)
+    play_again?(input_user_name)
     exit_program
   elsif user_choice == '2'#Delete Account
     delete_user(input_user_name)
