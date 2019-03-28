@@ -1,6 +1,44 @@
 def welcome
-  puts "Welcome user!"
+puts " "
+print "Welcome to"
+title_timer = 1
+until title_timer == 5
+  print "."
+  sleep(0.5)
+  title_timer += 1
 end
+puts " "
+puts " "
+puts "    ┈┈╱▔▔▔▔▔╲┈┈┈HM┈HM
+    ┈╱┈┈╱▔╲╲╲▏┈┈┈HMMM
+    ╱┈┈╱━╱▔▔▔▔▔╲━╮┈┈
+    ▏┈▕┃▕╱▔╲╱▔╲▕╮┃┈┈
+    ▏┈▕╰━▏▊▕▕▋▕▕━╯┈┈
+    ╲┈┈╲╱▔╭╮▔▔┳╲╲┈┈┈
+    ┈╲┈┈▏╭━━━━╯▕▕┈┈┈
+    ┈┈╲┈╲▂▂▂▂▂▂╱╱┈┈┈
+    ┈┈┈┈▏┊┈┈┈┈┊┈┈┈╲┈
+    ┈┈┈┈▏┊┈┈┈┈┊▕╲┈┈╲
+    ┈╱▔╲▏┊┈┈┈┈┊▕╱▔╲▕
+    ┈▏ ┈┈┈╰┈┈┈┈╯┈┈┈▕▕
+    ┈╲┈┈┈╲┈┈┈┈╱┈┈┈╱┈╲
+    ┈┈╲┈┈▕▔▔▔▔▏┈┈╱╲╲╲▏
+    ┈╱▔┈┈▕┈┈┈┈▏┈┈▔╲▔▔
+    ┈╲▂▂▂╱┈┈┈┈╲▂▂▂╱┈"
+puts"   ____        _     _        "
+puts"  / __ l      (_)   (_)       "
+puts" | |  | |_   _ _ _____  __ _  "
+puts" | |  | | | | | |_  / |/ _` | "
+puts" | |__| | |_| | |/ /| | (_| | "
+puts"  l___l_ll__,_|_/___|_|l__,_| "
+puts " "
+end
+
+
+
+
+
+
 
 def get_user_name
   puts "Please type your user name:"
@@ -18,7 +56,7 @@ def check_user_name(user_name)
     # get_confirmation_for_deleting_user(user_name)
     # binding.pry
   else
-    puts "Welcome to Trivia!"
+    puts "Welcome to Quizia!"
     # binding.pry
     User.create(user_name: user_name)
   end
@@ -82,7 +120,7 @@ def get_type_of_questions
     puts "Hey, you goofed, please select 1, 2, or 3"
     get_type_of_questions
   end
-  puts " "
+  # puts " "
 end
 
 # def save_program
@@ -110,7 +148,7 @@ end
 
 def display_main_menu
   puts "*" * 30
-  puts "1 - Start Trivia\n2 - Delete Account\n3 - Change Account Name\n4 - Stats Page\n5 - Exit"
+  puts "  1 - Start Trivia\n  2 - Delete Account\n  3 - Change Account Name\n  4 - Stats Page\n  5 - Exit"
   puts "*" * 30
   puts "Please choose select a number:"
 end
@@ -118,7 +156,9 @@ end
 def update_user_account_name(old_user_name)
   puts "Please enter your new user name:"
   new_user_name = gets.chomp
-  if User.find_by(user_name: new_user_name)
+  if new_user_name == 'exit'
+    exit_program
+  elsif User.find_by(user_name: new_user_name)
     puts "Sorry, this user name is already taken."
     update_user_account_name(old_user_name)
   else

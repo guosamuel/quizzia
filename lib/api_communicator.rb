@@ -40,7 +40,7 @@ def generate_questions(api_hash_of_questions)
     puts "QUESTION #{@question_counter} of #{api_hash_of_questions["results"].length}"
     puts question["question"]
       if question["type"] == 'multiple'
-        puts "Please choose a number between 1 and 4"
+        puts "    Please choose a number between 1 and 4"
         compiled_answers = compile_all_multiple_choice_answers(question)
         mult_cho_hash = multiple_choice_hash_maker(compiled_answers)
         format_display_mult_choi_answers(compiled_answers)
@@ -48,14 +48,14 @@ def generate_questions(api_hash_of_questions)
             if answer == 'exit'
               exit_program
             end
-       if mult_cho_hash[answer.to_i] == question["correct_answer"]
+          if mult_cho_hash[answer.to_i] == question["correct_answer"]
             puts "Correct!\n "
             @score_counter += 1
           else
             puts "You wrong!\nIt is obviously '#{question["correct_answer"]}'.\n "
           end
       else
-       puts "Please type either True or False"
+       puts "   Please type either True or False"
        answer = gets.chomp
            if answer == 'exit'
              exit_program
@@ -69,7 +69,7 @@ def generate_questions(api_hash_of_questions)
        end
        @question_counter += 1
     end
-    puts "You managed to score #{@score_counter} out of #{api_hash_of_questions["results"].length}!\nYou must think you're soooo smmmarrt... Looser."
+    puts "You managed to score #{@score_counter} out of #{api_hash_of_questions["results"].length}!\nYou must think you're soooo smmmarrt... Loser."
 end
 
 def save_program(current_user_name)
@@ -78,7 +78,7 @@ def save_program(current_user_name)
   keep_user = gets.chomp
     if keep_user.downcase == 'n' || keep_user.downcase == 'no'
        # User.destroy(User.find_by(user_name: user_name).id)
-    else
+    elsif keep_user.downcase == 'y' || keep_user.downcase == 'yes'
         if !User.find_by(user_name: current_user_name).num_of_total_answers
           current_num_of_total_answers = @question_counter - 1
           current_num_of_correct_answers = @score_counter
@@ -90,8 +90,21 @@ def save_program(current_user_name)
           current_num_of_correct_answers += @score_counter
         end
         User.update(User.find_by(user_name: current_user_name).id, num_of_correct_answers: current_num_of_correct_answers, num_of_total_answers: current_num_of_total_answers)
+          puts "Saving file. Do not shutdown computer.\n "
+          timer = 1
+          until timer == 4
+            print "*+*+*"
 
-        puts "Saving file. Do not shutdown computer.\n#{"*+" * 15}\n \nSave Successful!\n "
+            print " #{100/(4-timer)}% "
+            sleep(1)
+            timer += 1
+          end
+          print " Complete!"
+          puts " "
+          puts " \nSave Successful!\n "
+      else
+        puts "Invalid argument. Select Yes or No"
+        save_program(current_user_name)
      end
 end
 

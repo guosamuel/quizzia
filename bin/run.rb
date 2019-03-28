@@ -24,8 +24,9 @@ def main_program(input_user_name)
     exit_program
   elsif user_choice == '2'#Delete Account
     delete_user(input_user_name)
-    puts "See ya looser.\n "
-    main_program(input_user_name)
+    puts "See ya loser.\n "
+    # main_program(input_user_name)
+    exit_program#------------------------
     #revisit for looping within the main program
   elsif user_choice == '3'#Change Account Name
     update_user_account_name(input_user_name)
