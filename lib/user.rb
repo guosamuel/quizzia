@@ -2,7 +2,6 @@ class User < ActiveRecord::Base
   has_many :user_answers
   has_many :questions, through: :user_answers
 
-
   def user_stats
     if !self.num_of_total_answers
       puts "You have not answered any questions!"
@@ -14,14 +13,8 @@ class User < ActiveRecord::Base
   end
 
   def accuracy_percentage
-    # if !self.num_of_total_answers
-    #   puts "You have not answered any questions!"
-    # else
-      percentage = (self.num_of_correct_answers.to_f / self.num_of_total_answers)*100
-    # end
-      puts "Your accuracy is #{percentage.round(2)}%."
+    percentage = (self.num_of_correct_answers.to_f / self.num_of_total_answers)*100
+    puts "Your accuracy is #{percentage.round(2)}%."
   end
-
-
 
 end
