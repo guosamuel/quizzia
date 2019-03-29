@@ -4,10 +4,15 @@ require 'pry'
 
 @player = Audite.new
 
- def get_api(num_of_questions, question_type = nil)
-   response_string = RestClient.get("https://opentdb.com/api.php?amount=#{num_of_questions}&type=#{question_type}")
-   response_hash = JSON.parse(response_string)
- end
+def play_audio(file_name)
+  @player.load("./audio/#{file_name}")
+  @player.start_stream
+end
+
+def get_api(num_of_questions, question_type = nil)
+ response_string = RestClient.get("https://opentdb.com/api.php?amount=#{num_of_questions}&type=#{question_type}")
+ response_hash = JSON.parse(response_string)
+end
 
 def compile_all_multiple_choice_answers(questions)
   all_answers = questions["incorrect_answers"]
@@ -54,13 +59,11 @@ def generate_questions(api_hash_of_questions)
 
       if mult_cho_hash[answer.to_i] == question["correct_answer"]
         puts "Correct!\n "
-        @player.load("./audio/Super Mario Bros.-Coin Sound Effect.mp3")
-        @player.start_stream
+        play_audio('Super Mario Bros.-Coin Sound Effect.mp3')
         @score_counter += 1
       else
         puts "You wrong!\nIt is obviously '#{question["correct_answer"]}'.\n "
-        @player.load("./audio/zapsplat_multimedia_game_error_tone_009_24927.mp3")
-        @player.start_stream
+        play_audio('zapsplat_multimedia_game_error_tone_009_24927.mp3')
       end
 
     else
@@ -73,13 +76,11 @@ def generate_questions(api_hash_of_questions)
 
        if  question["correct_answer"].first.downcase == answer.first.downcase
          puts "Correct!\n "
-         @player.load("./audio/Super Mario Bros.-Coin Sound Effect.mp3")
-         @player.start_stream
+         play_audio('Super Mario Bros.-Coin Sound Effect.mp3')
          @score_counter += 1
        else
          puts "You're pretty dumb.\nThe correct answer was '#{question["correct_answer"]}'.\n "
-         @player.load("./audio/zapsplat_multimedia_game_error_tone_009_24927.mp3")
-         @player.start_stream
+         play_audio('zapsplat_multimedia_game_error_tone_009_24927.mp3')
        end
      end
   @question_counter += 1
@@ -117,8 +118,7 @@ def save_program(current_user_name)
       end
 
     print " Complete!"
-    @player.load("./audio/zapsplat_multimedia_notification_mallet_synth_dreamy_014_26423.mp3")
-    @player.start_stream
+    play_audio('zapsplat_multimedia_notification_mallet_synth_dreamy_014_26423.mp3')
     sleep(1)
     puts " "
     puts " \nSave Successful!\n "

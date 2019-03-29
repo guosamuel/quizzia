@@ -1,5 +1,10 @@
 @player = Audite.new
 
+def play_audio(file_name)
+  @player.load("./audio/#{file_name}")
+  @player.start_stream
+end
+
 def welcome
   puts " "
   print "Welcome to"
@@ -37,8 +42,7 @@ def welcome
   puts"  l___l_ll__,_|_/___|_|l__,_| "
   puts " "
 
-  @player.load('./audio/zapsplat_multimedia_radio_production_voice_male_processed_deep_says_get_ready_28178.mp3')
-  @player.start_stream
+  play_audio('zapsplat_multimedia_radio_production_voice_male_processed_deep_says_get_ready_28178.mp3')
 end
 
 def get_user_name
