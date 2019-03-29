@@ -151,6 +151,7 @@ end
 
 def delete_user(user_name)
   User.destroy(User.find_by(user_name: user_name).id)
+  puts "Your account was successfully deleted! (We know you were trying to get rid of your horrible stats.)"
 end
 
 def display_main_menu
