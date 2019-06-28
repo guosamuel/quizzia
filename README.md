@@ -1,31 +1,19 @@
-Module One Final Project
+Quizzia
 ========================
 
-Congratulations, you're at the end of module one! You've worked crazy hard to get here and have learned a ton.
-
-For your final project, you'll be building a Command Line Application.
+Welcome to Quizzia! This is an interactive trivia game whose questions is sourced from a third-party API.
 
 ---
 
-## Goals (Minimum Requirements)
+## Description
 
-You will be building a **Command Line CRUD App** that uses a database to persist information. The goal of which is to demonstrate all of the skills that you've learned in module one:
-
-- Ruby
-- Object Orientation
-- Relationships (via ActiveRecord)
-- Problem Solving (via creating a Command Line Interface (CLI))
-
-Your **minimum requirements** for this project are to build a Command Line App that:
-
-1. Contains at least three models with corresponding tables, including a join table.
-2. Accesses a Sqlite3 database using ActiveRecord.
-3. Has a CLI that allows users to interact with your database as defined by your _user stories_ (minimum of four; one for each CRUD action).
-4. Uses good OO design patterns. You should have separate models for your runner and CLI interface.
+Quizzia is a Command Line App that receives the user’s input as an answer, check if the answer is correct, and gives the respective response. Quizzia stores the game history and score of individual users.
 
 ---
 
-## Project Overview (Timeline)
+## Features
+
+1. Remembers users 
 
 ### Phase 1: The Setup
 
