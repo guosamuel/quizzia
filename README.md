@@ -39,6 +39,7 @@ When deleting a username, the application will automatically exit. This will ind
 Quizzia is a collaboration project between Paul Riverain and Samuel Guo. Link for their respective github profiles can be found below:
 
 Paul Riverain: https://github.com/paulriverain
+
 Samuel Guo: https://github.com/guosamuel
 
 🎊 Hope you have fun! 🎊
